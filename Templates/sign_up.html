@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  Sign Up
+{% endblock %}
+
+{% block content %}
+    <body class="text-center">
+      <h1 class="mt-3">
+        Sign Up
+      </h1>
+      <form action="/sign_up" method="post">
+        <input type="text" name="username" placeholder="Enter Your Username" style="height: 40px;width: 300px;" class="my-3">
+        <input type="password" name="password" placeholder="Enter Your Password" style="height: 40px;width: 300px;" class="my-3">
+        <button class="btn btn-secondary" type="submit">Submit</button>
+      </form>
+    </body>
+{% endblock %}

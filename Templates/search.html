@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  Search
+{% endblock %}
+
+{% block content %}
+    <body class="text-center">
+      <h5 class="my-3">
+      Hello, you can search from over 5000 books in the search bar below!
+      </h5>
+      <form action="/search" method=post>
+        <input type="text" name="search" placeholder="Enter a Book Title, Author, or Isbn Here" style="height: 50px;width: 500px;">
+        <button type="submit" class="btn btn-primary btn-lg">
+          Search
+        </button>
+      </form>
+    </body>
+{% endblock %}

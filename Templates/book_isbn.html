@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  {{data.title}}
+{% endblock %}
+
+{% block content %}
+<div class="container bg-light">
+  <h1 class="container bg-dark text-white text-center my-1">{{data.title}}</h1>
+  <div class="col text-center my-1">
+    Author:<div>{{data.author}}</div>
+    Year:<div> {{data.year}}</div>
+    Isbn:<div> {{data.isbn}}</div>
+  </div>
+  <div class="row font-weight-bold my-5">
+    <h4 class="col-6 float-right">
+      <div>Goodreads.com average rating: </div>
+      <div>{{average_rating}}</div>
+      <div>Number reviews received: </div>
+      <div>{{work_ratings_count}}</div>
+    </h4>
+    <img src="https://www.pikpng.com/pngl/b/435-4359065_two-flags-over-iwo-jima-reviews-goodreads-logo.png" alt='Goodreads Image' class="col-6 float-left" style="height: 125px;">
+  </div>
+</div>
+{% if reviews != None %}
+{% for x in reviews %}
+<div class="container bg-light my-5">
+  <h6>Rating: {{x.rating}} of 5</h6>
+  <blockquote class="blockquote">
+    <p>{{x.review}}</p>
+    <footer class="blockquote-footer">{{x.username}}</footer>
+  </blockquote>
+</div>
+{% endfor %}
+{% endif %}
+<div class="container bg-light my-5">
+  <form action="{{url_for("book",isbn=data.isbn)}}" method="POST">
+    <label class="row my-1">Write a review...</label>
+    <textarea name="review" class="row my-2">
+    </textarea>
+    <select class="row my-3" name="rating" required>
+      <option selected value disabled>Select a Rating</option>
+      <option value="1">1 star</option>
+      <option value="2">2 stars</option>
+      <option value="3">3 stars</option>
+      <option value="4">4 stars</option>
+      <option value="5">5 stars</option>
+    </select>
+    <button type="submit" class="row my-2 btn btn-secondary">Send Review</button>
+  </form>
+</div>
+{% endblock %}

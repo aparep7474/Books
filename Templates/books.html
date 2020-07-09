@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  Books
+{% endblock %}
+
+{% block content %}
+<main>
+  <div class="container bg-light">
+    <div class="list-group">
+      {% for x in data %}
+      <a href="/book/{{x.isbn}}" class="list-group-item">
+        <div class="text-primary">{{x.title}}</div>
+        <div class="text-secondary">by {{x.author}} in the year {{x.year}}</div>
+        <div class="text-secondary">
+          <span class="float-right">isbn: {{x.isbn}}</span>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</main>
+{% endblock %}
